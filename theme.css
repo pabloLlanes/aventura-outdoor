@@ -1,0 +1,137 @@
+/*
+  theme.css — Landing "Aventura Outdoor"
+  =======================================
+  Ningún ejemplo oficial de Bootstrap trae un hero con imagen o video de
+  fondo a pantalla completa, así que estas clases SÍ son 100% propias (no
+  vienen copiadas de heroes.css/cover.css). La idea es dejar la técnica
+  pelada, lista para reutilizar en cualquier proyecto.
+
+  TÉCNICA 1 — Hero con imagen de fondo
+  -------------------------------------
+  1) Un div con min-height (o min-vh-100) + background-image + background-size:
+     cover + background-position: center. Eso hace que la foto llene el
+     bloque sin deformarse, igual que "object-fit: cover" hace con un <img>.
+  2) Se le agrega un linear-gradient() oscuro ARRIBA de la imagen (Bootstrap
+     no hace esto por defecto) para que el texto blanco sea legible sin
+     importar qué tan clara sea la foto.
+  3) El texto se centra con flexbox (d-flex align-items-center justify-content-center).
+
+  TÉCNICA 2 — Hero con video de fondo
+  -------------------------------------
+  1) Un <video autoplay muted loop playsinline> puesto en position:absolute,
+     detrás del contenido (que va con position:relative + z-index).
+     - autoplay + muted es OBLIGATORIO: los navegadores bloquean el autoplay
+       de video con sonido.
+     - playsinline es necesario para que autoplay funcione en iPhone/Safari.
+   2) object-fit: cover en el <video> para que llene el contenedor igual
+      que la imagen de la Técnica 1.
+   3) Mismo degradado oscuro encima, para legibilidad del texto.
+
+  TÉCNICA 3 — Banda parallax (separador de sección)
+  -------------------------------------
+  Es la Técnica 1 pero angosta (min-height más chico) y sin flexbox de
+  contenido complejo: solo un título/frase corta centrada. La clave del
+  "parallax" es background-attachment: fixed (ver .hero-bg-image arriba,
+  que ya la usa). Acá se la separa en su propia clase .parallax-band para
+  poder reutilizarla como separador en cualquier punto de una página larga,
+  no solo como hero de arriba de todo.
+*/
+
+.hero-bg-image {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    linear-gradient(180deg, rgba(4, 20, 20, 0.35) 0%, rgba(4, 20, 20, 0.75) 100%),
+    url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* efecto "parallax" simple, ver comentario en el HTML */
+  color: #fff;
+}
+
+.hero-bg-video {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-bg-video__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-bg-video__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 100%);
+  z-index: 1;
+}
+
+.hero-bg-video__content {
+  position: relative;
+  z-index: 2;
+}
+
+.parallax-band {
+  min-height: 40vh;
+  background-image:
+    linear-gradient(180deg, rgba(4, 20, 20, 0.55) 0%, rgba(4, 20, 20, 0.55) 100%),
+    url("https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Fotos de las cards de "Próximas salidas": alto fijo + cover para que las
+   3 columnas queden parejas aunque las fotos originales sean de otra proporción */
+.itinerary-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Avatar circular de los testimonios: sin esto, .rounded-circle sola no
+   alcanza porque la imagen no es cuadrada por defecto */
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* El componente .ratio de Bootstrap fuerza el ALTO del contenedor, pero la
+   <img> de adentro por defecto se estira (se deforma) para llenarlo. Con
+   position:absolute + inset:0 (que ya aplica .ratio > *) + object-fit:cover
+   la foto se recorta en vez de deformarse, igual que en el resto de la
+   biblioteca. Esto SÍ hace falta agregarlo a mano: no viene incluido en
+   la clase .ratio de Bootstrap. */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #0f766e;
+  --bs-primary-rgb: 15, 118, 110;
+}
+
+[data-bs-theme="dark"] {
+  --bs-primary: #2dd4bf;
+  --bs-primary-rgb: 45, 212, 191;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #0f766e;
+  --bd-violet-rgb: 15, 118, 110;
+}
