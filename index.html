@@ -1,35 +1,4 @@
 <!doctype html>
-<!--
-  ============================================================================
-  "Aventura Outdoor" (agencia de turismo aventura)
-  ============================================================================
-  Esta landing agrega TRES técnicas que no aparecen en los ejemplos oficiales
-  de /heroes/ (ahí los hero son siempre de color sólido, bg-dark, o con una
-  imagen chica al costado, nunca una foto/video de fondo a pantalla completa):
-
-    1) Hero con IMAGEN de fondo (Unsplash) + overlay oscuro.
-    2) Hero con VIDEO de fondo (loop, mudo, autoplay) + overlay oscuro.
-    3) Banda "parallax" (imagen fija con background-attachment: fixed) como
-       separador de sección, antes del footer.
-
-  Toda la explicación de CÓMO se logra cada técnica está en theme.css
-  (clases .hero-bg-image, .hero-bg-video y .parallax-band). Acá en el HTML
-  solo se comentan los atributos puntuales de cada bloque.
-
-  Alrededor de los 2 heroes se agregaron más secciones, para que ningún par
-  de bloques "a pantalla completa" quede pegado uno con el otro:
-
-    - "Próximas salidas": cards con foto (mismo componente que pricing/menú
-      en otras landings de /landings/).
-    - "Lo que dicen los viajeros": cards con blockquote + avatar + rating
-      con estrellas (ícono repetido, sin librerías extra).
-    - "Galería": entre el hero de video y la banda parallax, para separar
-      esos dos fondos a pantalla completa. Usa el componente ".ratio" de
-      Bootstrap (fotos siempre cuadradas/con relación de aspecto fija, sin
-      JS), como alternativa liviana a /masonry/index.html (que depende de
-      una librería externa por CDN).
-  ============================================================================
--->
 <html lang="es" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -60,7 +29,6 @@
       <symbol id="life-preserver" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16Z"></path><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 1a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"></path></symbol>
       <symbol id="star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path></symbol>
       <symbol id="clock" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16Zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path></symbol>
-      <!-- Íconos de redes, tomados tal cual de /footers/index.html -->
       <symbol id="instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path></symbol>
       <symbol id="facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path></symbol>
       <symbol id="youtube" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.108.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.183.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"></path></symbol>
@@ -78,7 +46,6 @@
       </ul>
     </div>
 
-    <!-- Navbar transparente que flota sobre el hero: position-absolute + z-index -->
     <nav class="navbar navbar-expand-md navbar-dark position-absolute w-100" style="z-index: 3">
       <div class="container">
         <a class="navbar-brand fw-bold" href="#">Cumbre Libre</a>
@@ -96,14 +63,6 @@
     </nav>
 
     <main>
-      <!--
-        HERO 1: IMAGEN DE FONDO
-        Clase .hero-bg-image definida en theme.css (ver ahí la explicación
-        completa de background-image + gradient + background-attachment).
-        Nada de esto es un componente "de catálogo" de Bootstrap: es CSS
-        propio combinado con utilidades de Bootstrap (d-flex, text-center,
-        container, btn-lg, etc.) para el contenido de adentro.
-      -->
       <section class="hero-bg-image text-center">
         <div class="container">
           <span class="badge text-bg-light mb-3">Temporada 2026 abierta</span>
@@ -119,11 +78,6 @@
         </div>
       </section>
 
-      <!--
-        FEATURES
-        Reutilizamos el patrón "Columns with icons" de /features/index.html,
-        igual que en la landing tech-startup, con otros 3 íconos/textos.
-      -->
       <div class="container px-4 py-5" id="expediciones">
         <h2 class="pb-2 border-bottom text-center">Nuestras expediciones</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -151,14 +105,6 @@
         </div>
       </div>
 
-      <!--
-        ITINERARIOS (cards con foto)
-        Mismo componente .card que se usa para pricing/menú en otras
-        landings de la biblioteca (ver /landings/tech-startup y
-        /landings/restaurante): card + card-img-top + card-body. Acá se le
-        suma un .badge posicionado arriba de la foto (position-absolute)
-        para mostrar la duración sin ocupar espacio en el card-body.
-      -->
       <div class="container px-4 py-5">
         <h2 class="pb-2 border-bottom text-center">Próximas salidas</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4 py-4">
@@ -213,14 +159,6 @@
         </div>
       </div>
 
-      <!--
-        TESTIMONIOS
-        Componente .card reutilizado otra vez, ahora con un <blockquote> adentro
-        (semánticamente correcto para citas) y un avatar circular
-        (rounded-circle) con foto de Unsplash. Las estrellas son el mismo
-        ícono repetido 5 veces: así de simple es armar un "rating" sin
-        ninguna librería extra.
-      -->
       <div class="bg-body-tertiary py-5">
         <div class="container px-4">
           <h2 class="pb-2 border-bottom text-center mb-4">Lo que dicen los viajeros</h2>
@@ -289,14 +227,6 @@
         </div>
       </div>
 
-      <!--
-        HERO 2: VIDEO DE FONDO
-        Clase .hero-bg-video (+ __video, __overlay, __content) en theme.css.
-        El <video> es de dominio público (Creative Commons Zero), alojado en
-        los servidores de MDN, pensado justamente para demos como esta.
-        Atributos clave: autoplay muted loop playsinline (ver comentario en
-        theme.css sobre por qué son necesarios).
-      -->
       <section class="hero-bg-video text-center" id="video">
         <video
           class="hero-bg-video__video"
@@ -317,31 +247,7 @@
         </div>
       </section>
 
-      <!--
-        GALERÍA (componente Ratio de Bootstrap)
-        Se ubica a propósito ACÁ, entre el hero de video y la banda parallax,
-        para que esos dos bloques de "fondo a pantalla completa" no queden
-        pegados uno con otro: separa la ambientación del video de la
-        ambientación de la imagen fija de abajo.
-
-        Original: /masonry/index.html usa una librería externa (Masonry, vía
-        CDN) para acomodar fotos de distinto alto en columnas. Acá, en vez de
-        sumar una dependencia de JS, usamos el componente propio de
-        Bootstrap ".ratio" (documentado en "Helpers > Ratio"):
-
-          <div class="ratio ratio-1x1"> ... </div>
-
-        .ratio fuerza que su contenido (la <img>) mantenga SIEMPRE una
-        relación de aspecto fija (acá 1:1, cuadrada), sin importar el
-        tamaño original de cada foto — es puro CSS (usa aspect-ratio por
-        debajo), no requiere ningún script. Bootstrap trae de fábrica
-        ratio-1x1, ratio-4x3, ratio-16x9 y ratio-21x9; para una relación
-        custom se puede usar --bs-aspect-ratio en línea, como se ve en la
-        última foto de esta grilla.
-
-        La grilla en sí (row-cols-*, g-2) es la misma técnica de grilla que
-        ya usamos en /landings/gimnasio/ para "Nuestras instalaciones".
-      -->
+      <!-- Galería ubicada a propósito acá, entre el hero de video y la banda parallax, para separar esos dos fondos a pantalla completa -->
       <div class="container px-4 py-5">
         <h2 class="pb-2 border-bottom text-center mb-4">Galería</h2>
         <div class="row row-cols-2 row-cols-md-4 g-2">
@@ -361,10 +267,6 @@
             </div>
           </div>
           <div class="col">
-            <!-- Relación de aspecto custom (no viene predefinida en Bootstrap
-                 como ratio-1x1/4x3/16x9/21x9): se pisa la variable
-                 --bs-aspect-ratio en línea con un valor propio (acá 3:4,
-                 formato "retrato", útil para una foto vertical de montaña). -->
             <div class="ratio" style="--bs-aspect-ratio: calc(4 / 3 * 100%);">
               <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80" class="rounded-3 gallery-img" alt="Vista panorámica de montaña nevada">
             </div>
@@ -372,24 +274,6 @@
         </div>
       </div>
 
-      <!--
-        BANDA PARALLAX (imagen de fondo fija) — justo antes del footer
-        Reutiliza la MISMA técnica que el Hero 1 (.hero-bg-image en
-        theme.css: background-image + gradient encima + background-position:
-        center), pero en una clase nueva (.parallax-band) más baja y sin
-        botones, pensada como "separador" visual entre el contenido y el
-        footer en vez de como hero principal.
-
-        El efecto "parallax" en sí lo da una sola propiedad CSS:
-        background-attachment: fixed. Con eso, la imagen queda fija
-        respecto a la VENTANA del navegador (no respecto al div que la
-        contiene), entonces cuando el usuario scrollea, el contenido de
-        arriba y de abajo se mueven pero la foto de fondo se queda quieta
-        un instante extra: es la sensación de profundidad "parallax".
-        Limitación a tener en cuenta: background-attachment: fixed no
-        funciona en iOS Safari (lo ignora silenciosamente y se comporta
-        como background normal) — no rompe nada, solo no hay parallax ahí.
-      -->
       <section class="parallax-band d-flex align-items-center justify-content-center text-center text-white">
         <div class="container px-4">
           <h2 class="display-6 fw-bold mb-3">"La cima se disfruta más cuando se comparte."</h2>
